@@ -14,9 +14,11 @@ export class QuoteService {
 
   getQuotes(): Observable<Quote[]> {
     return this.http.get<Quote[]>('https://talaikis.com/api/quotes/')
-    .map(quote => quote.map(q => {
-      return {...q, id: Date.now() + Math.random()
+      .map(quote => quote.map(q => {
+        return {...q, id: Date.now() + Math.random()
       };
-    }));
+    })
+      .catch(err => Observable.throw('Ops..qualcosa è andato storto!'))
+    );
   }
 }
