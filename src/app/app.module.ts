@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { QuoteListComponent } from './components/quote-list/quote-list.component';
-import { QuoteService } from './shared/quotes.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { QuoteService } from './shared/quotes.service';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [QuoteService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,8 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { Quote } from '../../app/models/quote';
 
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class QuoteService {
 
   constructor(private http: HttpClient) {}
