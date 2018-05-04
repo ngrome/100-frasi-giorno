@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { QuoteService } from '../../shared/quotes.service';
 import { Quote } from '../../models/quote';
 
@@ -15,8 +15,9 @@ export class QuoteListComponent implements OnInit {
   constructor(private service: QuoteService) { }
 
   ngOnInit() {
-    this.service.getQuotes()
-      .subscribe(quotes => this.quotes = quotes);
+    this.service.getQuotes().subscribe(
+      quotes => this.quotes = quotes
+    );
   }
 
 }

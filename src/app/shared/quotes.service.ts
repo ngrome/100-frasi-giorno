@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of, throwError} from 'rxjs';
+import {map, catchError } from 'rxjs/operators';
+
 import { HttpClient } from '@angular/common/http';
 import { Quote } from '../../app/models/quote';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/throw';
+
 
 @Injectable()
 export class QuoteService {
@@ -14,9 +14,12 @@ export class QuoteService {
 
   getQuotes(): Observable<Quote[]> {
     return this.http.get<Quote[]>('https://talaikis.com/api/quotes/')
-    .map(quote => quote.map(q => {
-      return {...q, id: Date.now() + Math.random()
-      };
-    }));
+    .pipe(
+      map(quote => quote.map(q => {
+        return {...q, id: Date.now() + Math.random()
+        };
+      }),
+      catchError( err => throwError('Ops..qualcosa è andato storo!'))
+    ));
   }
 }
