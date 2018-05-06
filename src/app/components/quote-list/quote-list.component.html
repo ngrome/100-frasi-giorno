@@ -1,9 +1,7 @@
 <div class="row">
   <div class="col-md-10">
-    <blockquote *ngFor="let quote of quotes" class="blockquote">
-      <p>{{ quote.quote }}</p>
-      <footer class="blockquote-footer">{{ quote.author }} <cite title="Categoria">({{ quote.cat }})</cite></footer>
-      <hr>
-    </blockquote>
+    <div *ngFor="let quote of quotes">
+        <app-quote [quote]="quote"></app-quote>
+    </div>
   </div>
 </div>

@@ -4,17 +4,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { QuoteListComponent } from './components/quote-list/quote-list.component';
+import { QuoteComponent } from './components/quote/quote.component';
+import { TraduzioneService } from './shared/traduzione.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuoteListComponent
+    QuoteListComponent,
+    QuoteComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [TraduzioneService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
