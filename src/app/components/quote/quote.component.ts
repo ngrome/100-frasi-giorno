@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
 import { Quote } from '../../models/quote';
 
 import { TraduzioneService } from '../../shared/traduzione.service';
-import {Traduci} from '../../shared/traduzione.decorators';
+import {Traducimi} from '../../shared/traduzione.decorators';
 
 @Component({
   selector: 'app-quote',
@@ -11,12 +11,12 @@ import {Traduci} from '../../shared/traduzione.decorators';
 })
 export class QuoteComponent implements OnInit {
   @Input()
+  @Traducimi('en-it', 'quote')
   quote: Quote;
 
-  constructor(private traduzione: TraduzioneService) {
+  constructor(private changeDetector: ChangeDetectorRef, private traduzione: TraduzioneService) {
   }
 
-  @Traduci('en-zh', 'quote', 'quote')
   ngOnInit() {
     this.quote.author = 'Lorenzo';
   }
